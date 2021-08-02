@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load crispy_forms_filters %}
+
+{% block main %}
+<form action="" method=POST>
+    {% csrf_token %}
+    {{form|crispy}}
+    <button class='btn btn-outline-dark mt-3'>Submit</button>
+</form>
+{% endblock %}
