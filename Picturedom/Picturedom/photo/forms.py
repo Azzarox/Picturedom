@@ -1,6 +1,6 @@
 from django import forms
+from django.forms import widgets
 from Picturedom.photo.models import Photo, Comment
-
 
 class PhotoForm(forms.ModelForm):
     """
@@ -43,3 +43,15 @@ class PhotoCommentForm(forms.ModelForm):
             comment.save()
 
         return comment
+
+
+class EditCommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['content', ]
+        labels = {
+            'content': 'Edit your comment'
+        }
+        widgets = {
+            'content': widgets.Textarea(attrs={'style': 'height: 100px;'})
+        }
