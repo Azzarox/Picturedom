@@ -85,7 +85,8 @@ def edit_comment(request, pk):
         form = EditCommentForm(instance=comment)
 
     context = {
-        'form': form
+        'form': form,
+        'comment':comment,
     }
     return render(request, 'photos/edit_comment.html', context)
 
