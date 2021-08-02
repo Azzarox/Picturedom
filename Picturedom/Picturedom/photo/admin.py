@@ -1,3 +1,9 @@
 from django.contrib import admin
 
-# Register your models here.
+from Picturedom.photo.models import Comment, CommentLike, CommentDislike, Photo,Category
+
+admin.site.register(Photo)
+admin.site.register(Category)
+admin.site.register(Comment)
+admin.site.register(CommentLike)
+admin.site.register(CommentDislike)
