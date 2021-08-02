@@ -1,7 +1,7 @@
 {% load categories %}
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-{#    <a class="navbar-brand ps-5 logo" href="{% url 'list photos' %}">Picturedom</a>#}
+    <a class="navbar-brand ps-5 logo" href="{% url 'homepage photos' %}">Picturedom</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -11,9 +11,9 @@
 
             {% if user.is_authenticated %}
                 <li class="nav-item dropdown">
-{#                    <a class="nav-link dropdown-toggle" href="{% url 'list photos' %}" id="navbarDropdown" role="button"#}
-{#                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">#}
-{#                        Photos#}
+                    <a class="nav-link dropdown-toggle" href="{% url 'homepage photos' %}" id="navbarDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Photos
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 {#                        <a class="dropdown-item" href="{% url 'create photo' %}">Add Photo</a>#}
