@@ -2,8 +2,8 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 
-from Picturedom.photo.forms import PhotoForm, PhotoCommentForm
-from Picturedom.photo.models import Photo
+from Picturedom.photo.forms import PhotoForm, PhotoCommentForm, EditCommentForm
+from Picturedom.photo.models import Photo, Comment
 
 
 def homepage_photos(request):
@@ -70,4 +70,29 @@ def add_comment(request, pk):
         messages.warning(request, text)
     return redirect('photo comments', pk)
 
-# edit comment only for the user logged in
+
+@login_required
+def edit_comment(request, pk):
+    comment = Comment.objects.filter(user=request.user).get(pk=pk)
+    image_pk = comment.comment_image.id
+    if request.method == 'POST':
+        form = EditCommentForm(request.POST, instance=comment)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.save()
+            return redirect('photo comments', image_pk)
+    else:
+        form = EditCommentForm(instance=comment)
+
+    context = {
+        'form': form
+    }
+    return render(request, 'photos/edit_comment.html', context)
+
+
+@login_required
+def delete_comment(request, pk):
+    comment = Comment.objects.filter(user=request.user).get(pk=pk)
+    image_pk = comment.comment_image.id
+    comment.delete()
+    return redirect('photo comments', image_pk)
