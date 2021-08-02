@@ -1,0 +1,197 @@
+/* edit button */
+
+a.edit {
+    float: right;
+    text-decoration: none;
+    color: #979797;
+    margin: 0 5px 0 0;
+}
+
+
+a.edit:hover {
+    text-decoration: underline;
+    color: #000;
+}
+
+/* like dislike buttons */
+
+a.pe-1 i {
+    color: black;
+}
+
+a.pe-1 i:hover {
+    color: #979797;
+}
+
+/* elements */
+p.posted-by {
+    margin: 15px auto;
+    width: 32%;
+}
+
+/* container details */
+html body.vsc-initialized div.container div.container-fluid.col-lg-4.col-md-12.mb-4.mb-lg-0 {
+    width: 50%;
+}
+
+/* original my  width:18rem;*/
+html body.vsc-initialized div.container div.container-fluid.col-lg-4.col-md-12.mb-4.mb-lg-0 div.card {
+    width: 30rem;
+
+}
+
+html body.vsc-initialized div.container div.container-fluid.col-lg-4.col-md-12.mb-4.mb-lg-0 div.card div.card-body form div.form-group div#div_id_content.form-group div textarea#id_content.textarea.form-control {
+    height: 100px;
+}
+
+/* starting from the highesh max-width */
+
+@media screen and (max-width: 1200px) {
+
+    p.posted-by {
+        margin: 15px auto;
+        width: 26%;
+    }
+
+    /* container details */
+    html body.vsc-initialized div.container div.container-fluid.col-lg-4.col-md-12.mb-4.mb-lg-0 {
+        width: 65%;
+    }
+
+    /* original my  width:18rem;*/
+    html body.vsc-initialized div.container div.container-fluid.col-lg-4.col-md-12.mb-4.mb-lg-0 div.card {
+        width: 35rem;
+
+    }
+
+
+}
+
+
+@media screen and (max-width: 1024px) {
+
+
+    p.posted-by {
+        margin: 15px auto;
+        width: 26%;
+    }
+
+    /* container details */
+    html body.vsc-initialized div.container div.container-fluid.col-lg-4.col-md-12.mb-4.mb-lg-0 {
+        width: 74%;
+    }
+
+    /* original my  width:18rem;*/
+    html body.vsc-initialized div.container div.container-fluid.col-lg-4.col-md-12.mb-4.mb-lg-0 div.card {
+        width: 32rem;
+
+    }
+
+
+}
+
+
+@media screen and (max-width: 900px) {
+    p.posted-by {
+        margin: 15px auto;
+        width: 26%;
+    }
+
+    /* container details */
+    html body.vsc-initialized div.container div.container-fluid.col-lg-4.col-md-12.mb-4.mb-lg-0 {
+        width: 102%;
+    }
+
+    /* original my  width:18rem;*/
+    html body.vsc-initialized div.container div.container-fluid.col-lg-4.col-md-12.mb-4.mb-lg-0 div.card {
+        width: 35rem;
+
+    }
+
+
+}
+
+
+@media screen and (max-width: 768px) {
+    p.posted-by {
+        margin: 15px auto;
+        width: 26%;
+    }
+
+    /* container details */
+    html body.vsc-initialized div.container div.container-fluid.col-lg-4.col-md-12.mb-4.mb-lg-0 {
+        width: 95.5%;
+    }
+
+    /* original my  width:18rem;*/
+    html body.vsc-initialized div.container div.container-fluid.col-lg-4.col-md-12.mb-4.mb-lg-0 div.card {
+        width: 33rem;
+
+    }
+
+
+}
+
+
+@media screen and (max-width: 600px) {
+    p.posted-by {
+        margin: 15px auto;
+        width: 40%;
+    }
+
+    /* container details */
+    html body.vsc-initialized div.container div.container-fluid.col-lg-4.col-md-12.mb-4.mb-lg-0 {
+        width: 109%;
+    }
+
+    /* original my  width:18rem;*/
+    html body.vsc-initialized div.container div.container-fluid.col-lg-4.col-md-12.mb-4.mb-lg-0 div.card {
+        width: 25rem;
+
+    }
+
+
+}
+
+
+
+@media screen and (max-width: 480px) {
+    p.posted-by {
+        margin: 15px auto;
+        width: 40%;
+    }
+
+    /* container details */
+    html body.vsc-initialized div.container div.container-fluid.col-lg-4.col-md-12.mb-4.mb-lg-0 {
+        width: 109%;
+    }
+
+    /* original my  width:18rem;*/
+    html body.vsc-initialized div.container div.container-fluid.col-lg-4.col-md-12.mb-4.mb-lg-0 div.card {
+        width: 22rem;
+
+    }
+
+}
+
+
+
+
+@media screen and (max-width: 320px) {
+
+    /* container details */
+    html body.vsc-initialized div.container div.container-fluid.col-lg-4.col-md-12.mb-4.mb-lg-0 {
+        width: 109%;
+    }
+
+    /* original my  width:18rem;*/
+    html body.vsc-initialized div.container div.container-fluid.col-lg-4.col-md-12.mb-4.mb-lg-0 div.card {
+        width: 14rem;
+
+    }
+
+    html body.vsc-initialized div.container div.container-fluid.col-lg-4.col-md-12.mb-4.mb-lg-0 div.card div.card-body form div.form-group div#div_id_content.form-group div textarea#id_content.textarea.form-control {
+        height: 100px;
+    }
+}
+

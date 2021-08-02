@@ -1,0 +1,120 @@
+div.container div.masonry-grid {
+    column-count: 3;
+    column-gap: 2rem;
+    width: 100%;
+}
+
+.masonry-grid__item {
+    break-inside: avoid;
+
+    margin-bottom: 1rem;
+}
+
+.masonry-grid__item a:hover {
+    opacity: 0.8;
+}
+
+img.resized {
+    width: 100%;
+    height: auto;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+
+
+@media screen and (max-width: 900px) {
+    div.container div.masonry-grid {
+        column-count: 2;
+        column-gap: 1rem;
+        width: 100%;
+    }
+
+    img.resized {
+        width: 100%;
+        height: auto;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    div.container div.masonry-grid {
+        column-count: 2;
+        column-gap: 1rem;
+        width: 100%;
+    }
+
+    img.resized {
+        width: 100%;
+        height: auto;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+    }
+}
+
+
+
+@media screen and (max-width: 600px) {
+    div.container div.masonry-grid {
+        column-count: 1;
+        column-gap: 1rem;
+        width: 100%;
+    }
+
+    img.resized {
+        width: 100%;
+        height: auto;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    div.container div.masonry-grid {
+        column-count: 1;
+        column-gap: 2rem;
+        width: 59%;
+    }
+
+    img.resized {
+        width: 100%;
+        height: auto;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+    }
+}
+
+
+
+@media screen and (max-width: 320px) {
+    div.container div.masonry-grid {
+        column-count: 1;
+        column-gap: 200px;
+        width: 38%;
+    }
+
+
+    .masonry-grid__item {
+        break-inside: avoid;
+        margin-bottom: 1rem;
+    }
+
+    img.resized {
+        width: 290px;
+        height: auto;
+    }
+
+}
+
