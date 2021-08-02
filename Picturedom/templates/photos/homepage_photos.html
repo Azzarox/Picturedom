@@ -3,17 +3,17 @@
 {% load static %}
 
 {% block style %}
-    <link rel="stylesheet" href="{% static 'home_gallery/gallery.css' %}">
+    <link rel="stylesheet" href="{% static 'homepage/gallery.css' %}">
 {% endblock %}
 
 {% block main %}
     <div class="masonry-grid mt-4">
         {% for photo in photos %}
             <div class="masonry-grid__item">
-{#                <a href="{% url 'photo detail' photo.id %}">#}
+                <a href="{% url 'photo comments' photo.id %}">
                     <img src="{{ photo.image.url }}"
                          class="resized" alt=""/>
-{#                </a>#}
+                </a>
             </div>
         {% endfor %}
     </div>
