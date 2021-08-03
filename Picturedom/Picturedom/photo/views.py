@@ -161,7 +161,7 @@ def photo_category(request, pk):
     Takes all images that are in the category chosen and shows only 6 of them per page.
     """
     category = Category.objects.get(pk=pk)
-    photos = category.photo_set.all()
+    photos = category.photo_set.all().order_by('id')  # ads ordering to bypass UnorderdObjectListWarning
 
     paginator = Paginator(photos, 6)
     page_number = request.GET.get('page')
