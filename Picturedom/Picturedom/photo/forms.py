@@ -2,10 +2,12 @@ from django import forms
 from django.forms import widgets
 from Picturedom.photo.models import Photo, Comment
 
+
 class PhotoForm(forms.ModelForm):
     """
     The init removes the '-----' visualisation when there is no category chosen.
     """
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['category'].empty_label = None
@@ -22,7 +24,6 @@ class PhotoForm(forms.ModelForm):
 
 
 class PhotoCommentForm(forms.ModelForm):
-
     image_pk = forms.IntegerField(widget=forms.HiddenInput())
 
     class Meta:
