@@ -1,9 +1,10 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
 from django.shortcuts import render, redirect
 
 from Picturedom.photo.forms import PhotoForm, PhotoCommentForm, EditCommentForm
-from Picturedom.photo.models import Photo, Comment, CommentDislike, CommentLike
+from Picturedom.photo.models import Photo, Comment, CommentDislike, CommentLike, Category
 
 
 def homepage_photos(request):
@@ -143,3 +144,30 @@ def dislike_comment(request, pk):
     else:
         messages.warning(request, 'You have already disliked this comment')
     return redirect('photo comments', photo_pk)
+
+
+@login_required()
+def user_photos(request):
+    user_pictures = request.user.photo_set.all()
+
+    context = {
+        'user_photos': user_pictures,
+    }
+    return render(request, 'photos/user_photos.html', context)
+
+
+def photo_category(request, pk):
+    """
+    Takes all images that are in the category chosen and shows only 6 of them per page.
+    """
+    category = Category.objects.get(pk=pk)
+    photos = category.photo_set.all()
+
+    paginator = Paginator(photos, 6)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    context = {
+        'photos': photos,
+        'page_obj': page_obj,
+    }
+    return render(request, 'photos/photo_category.html', context)
