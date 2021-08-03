@@ -1,0 +1,46 @@
+body {
+    font-weight: 500;
+    font-family: 'Quicksand', sans-serif;
+}
+
+html body.vsc-initialized header nav.navbar.navbar-expand-lg.navbar-dark.bg-dark {
+    margin-bottom:30px;
+}
+
+/* navbar */
+
+html body.vsc-initialized header nav.navbar.navbar-expand-lg.navbar-dark.bg-dark a:not(a.dropdown-item),
+html body.vsc-initialized header nav.navbar.navbar-expand-lg.navbar-dark.bg-dark div.d-flex.flex-row-reverse.bd-highlight div.navbar-nav.pe-5 span.nav-item.nav-link {
+    color: white;
+}
+
+html body.vsc-initialized header nav.navbar.navbar-expand-lg.navbar-dark.bg-dark div.d-flex.flex-row-reverse.bd-highlight div.navbar-nav.pe-5 a.nav-item.nav-link:hover,
+#navbarDropdown:hover,
+html body.vsc-initialized header nav.navbar.navbar-expand-lg.navbar-dark.bg-dark a.navbar-brand.ps-5.logo:hover,
+html body.vsc-initialized header nav.navbar.navbar-expand-lg.navbar-dark.bg-dark div.d-flex.flex-row-reverse.bd-highlight div.navbar-nav.pe-5 span.nav-item.nav-link:hover {
+    color: #979797
+}
+
+
+ul.navbar-nav {
+    color: white;
+
+}
+
+/* logo styling */
+
+a.logo {
+    font-family: 'Pacifico', cursive;
+    font-size: 1.3rem;
+}
+
+form div label span.asteriskField {
+    display: none;
+}
+
+
+@media screen and (max-width:900px) {
+    html body.vsc-initialized div.container {
+        width: 800px;
+    }
+}
