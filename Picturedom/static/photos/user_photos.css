@@ -1,0 +1,19 @@
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -8px;
+    margin-right: -8px;
+}
+
+.cards__item {
+    flex-basis: 25%;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+img.resize {
+    object-fit: cover;
+    object-position: center;
+    width: 100px;
+    height: 350px;
+}
