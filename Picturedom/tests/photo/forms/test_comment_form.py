@@ -38,6 +38,8 @@ class TestCommentForm(TestCase):
         form = PhotoCommentForm(data)
         self.assertTrue(form.is_valid())
         comment = form.save(commit=False)
+        self.assertEqual(comment.content, 'content')
+        self.assertEqual(comment.comment_image, self.photo)
         comment.user = self.user
         comment.save()
         self.assertIsInstance(comment, Comment)
