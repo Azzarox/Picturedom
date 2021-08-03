@@ -8,7 +8,7 @@ from Picturedom.photo.models import Category, Photo
 
 class TestPhotoDetailView(TestCase):
 
-    def test_photo_detail(self):
+    def test_photo_comments(self):
         user = User(username='user', password='pass')
         user.save()
 
