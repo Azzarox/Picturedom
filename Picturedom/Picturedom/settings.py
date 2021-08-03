@@ -40,8 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'Picturedom.photo',
     'Picturedom.auth_app',
+    'Picturedom.profile_user',
+    'Picturedom.photo',
     'crispy_forms',
 
 ]
