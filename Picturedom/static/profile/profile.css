@@ -1,0 +1,42 @@
+/* profile test */
+html body.vsc-initialized div.container div.row.py-5.px-4 div.col-md-5.mx-auto div.bg-white.shadow.rounded.overflow-hidden div.px-4.pt-0.pb-4.cover div.media.align-items-end.profile-head div.profile.mr-3 {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+
+}
+
+/* profile name and stuff text */
+html body.vsc-initialized div.container div.row.py-5.px-4 div.col-md-5.mx-auto div.bg-white.shadow.rounded.overflow-hidden div.px-4.pt-0.pb-4.cover div.media.align-items-end.profile-head div.media-body.mb-5.text-white h4.mt-0.mb-0 {
+    position: absolute;
+    left: 239px;
+}
+
+/* profile image div */
+
+.profile-head {
+    transform: translateY(1.5rem)
+}
+
+/* profile section contrast */
+.cover {
+    background: black;
+}
+
+/* recent images resize and fit */
+.cover-image {
+    object-fit: cover;
+    width: 218px;
+    height: 157px;
+}
+
+/* fixed  full_name wrap */
+html body.vsc-initialized div.container div.row.py-5.px-4 div.col-md-5.mx-auto div.bg-white.shadow.rounded.overflow-hidden div.px-4.pt-0.pb-4.cover div.media.align-items-end.profile-head div.media-body.mb-5.text-white h4.mt-0.mb-0 {
+    white-space: nowrap;
+}
+
+/* email change color  */
+html body.vsc-initialized div.container div.row.py-5.px-4 div.col-md-5.mx-auto div.bg-white.shadow.rounded.overflow-hidden div.bg-light.p-4.d-flex.justify-content-end.text-center ul.list-inline.mb-0 li.list-inline-item span.font-weight-bold.mb-0.d-block {
+
+    color: #6c757d;
+}
