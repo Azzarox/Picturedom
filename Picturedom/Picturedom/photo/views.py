@@ -55,6 +55,7 @@ def photo_comments(request, pk):
     return render(request, 'photos/comments.html', context)
 
 
+@login_required()
 def add_comment(request, pk):
     """
     Adds comment to the image - POST.
@@ -86,7 +87,7 @@ def edit_comment(request, pk):
 
     context = {
         'form': form,
-        'comment':comment,
+        'comment': comment,
     }
     return render(request, 'photos/edit_comment.html', context)
 
