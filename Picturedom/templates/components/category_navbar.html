@@ -6,7 +6,7 @@
     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
       {% for category in categories %}
-{#        <a class="dropdown-item" href="{% url 'category photos' category.id %}">{{category.title|capfirst}}</a>#}
+        <a class="dropdown-item" href="{% url 'photo category' category.id %}">{{category.title|capfirst}}</a>
       {% endfor %}
     </div>
   </li>
