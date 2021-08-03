@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'photos/category.css' %}">
+{% endblock %}
+
+{% block main %}
+
+    {% if photos %}
+        <div class="mt-5 gallery">
+            {% for photo in page_obj %}
+
+                <figure class="gallery__item gallery__item--{{ forloop.counter }}">
+                    <img src="{{ photo.image.url }}" alt="Gallery image 1" class="gallery__img">
+                </figure>
+            {% endfor %}
+        </div>
+        {% include 'components/paginator.html' %}
+    {% else %}
+        <p>No photos uploaded yet</p>
+    {% endif %}
+
+{% endblock %}
