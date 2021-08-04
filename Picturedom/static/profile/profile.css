@@ -8,7 +8,7 @@ html body.vsc-initialized div.container div.row.py-5.px-4 div.col-md-5.mx-auto d
 
 /* top padding change */
 html body.vsc-initialized div.container div.row.py-5.px-4 {
-    padding-top:1.5rem !important;
+    padding-top: 1.5rem !important;
 }
 
 /* profile name and stuff text */
@@ -43,4 +43,11 @@ html body.vsc-initialized div.container div.row.py-5.px-4 div.col-md-5.mx-auto d
 /* email change color  */
 html body.vsc-initialized div.container div.row.py-5.px-4 div.col-md-5.mx-auto div.bg-white.shadow.rounded.overflow-hidden div.bg-light.p-4.d-flex.justify-content-end.text-center ul.list-inline.mb-0 li.list-inline-item span.font-weight-bold.mb-0.d-block {
     color: #6c757d;
+}
+
+
+/* profile email change -> leads to messy stuff */
+/* works if email is set to be max-lenght 15 */
+.p-4 {
+    padding: 18px !important;
 }
