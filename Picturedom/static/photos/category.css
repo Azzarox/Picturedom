@@ -56,3 +56,7 @@
   grid-row-start: 6;
   grid-row-end: 9;
 }
+
+figure a:hover {
+  opacity: 0.95;
+}
