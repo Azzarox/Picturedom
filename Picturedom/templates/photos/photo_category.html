@@ -13,7 +13,7 @@
             {% for photo in page_obj %}
 
                 <figure class="gallery__item gallery__item--{{ forloop.counter }}">
-                    <img src="{{ photo.image.url }}" alt="Gallery image 1" class="gallery__img">
+                    <a href="{% url 'photo comments' photo.id %}"><img src="{{ photo.image.url }}" alt="Gallery image 1" class="gallery__img"></a>
                 </figure>
             {% endfor %}
         </div>
