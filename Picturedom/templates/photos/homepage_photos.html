@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block main %}
-    <div class="masonry-grid mt-4">
+    <div class="masonry-grid mt-5">
         {% for photo in photos %}
             <div class="masonry-grid__item">
                 <a href="{% url 'photo comments' photo.id %}">
