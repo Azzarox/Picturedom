@@ -9,10 +9,11 @@
 
 <div class="cards">
     {% for photo in user_photos %}
-    <div class="cards__item mt-5">
-        <img src="{{photo.image.url}}" class="w-100 shadow-1-strong rounded mb-4 resize" alt="" />
+    <div class="cards__item mt-4">
+        <a href="{% url 'photo comments' photo.id %}"><img src="{{photo.image.url}}" class="w-100 shadow-1-strong rounded mb-4 resize" alt="" /></a>
     </div>
     {%endfor%}
 </div>
+
 
 {% endblock  %}
