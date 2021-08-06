@@ -10,7 +10,25 @@ The project is named **Picturedom** and the idea is to create something resembli
 
 #### Comments:
 - can be liked and disliked
+- can be edited
+- can be deleted
 
+#### Profile
+- can edit information about first and last names, age and email also add profile image
+
+## Data Validations
+#### Images
+- can't post file bigger than or equal to 8MB
+#### Comments
+- can't add swearing words such as suck, fuck etc.
+- can't like or dislike when already liked or disliked already 
+#### Profile
+- can't have numbers or spaces in the first or last name of the user
+- can't have email ending with anything else except .bg .org .com .net .edu
+- can't have age bigger than or equal to 100
+- can't have profile image file size bigger than or equal to 1MB
+#### Others
+- All forms have bot catching field and validator checking if the field is empty or not
 
 ## URL paths:
 ### Disclaimer
