@@ -1,14 +1,14 @@
-## Project Overview:
-The project is named **Picturedom** and the idea is to create something resembling **Instagram** or **Pinterest**. Mainly photo-oriented website.
+## Project Overview
+The project website is named **Picturedom** and the idea is to create something resembling **Instagram** or **Pinterest**. Mainly photo-oriented website.
 
 ## Main functionality:
-#### Images:
+#### Images
 - can be liked and disliked
 - can be viewed
 - can be posted
 - can be commented on
 
-#### Comments:
+#### Comments
 - can be liked and disliked
 - can be edited
 - can be deleted
