@@ -32,5 +32,10 @@ Everywhere where the url has number 1, it means it is used <int:pk>
 - [http://127.0.0.1:8000/photo/comments/dislike/1](http://127.0.0.1:8000/photo/comments/dislike/1)
 - [http://127.0.0.1:8000/user/photos](http://127.0.0.1:8000/user/photos)
 - [http://127.0.0.1:8000/user/profile](http://127.0.0.1:8000/user/profile)
-
+### Others
+#### Handling custom error templates when debug is set to False
+- [http://127.0.0.1:8000/400/](http://127.0.0.1:8000/400/)
+- [http://127.0.0.1:8000/403/](http://127.0.0.1:8000/403/)
+- [http://127.0.0.1:8000/404/](http://127.0.0.1:8000/404/)
+- [http://127.0.0.1:8000/500/](http://127.0.0.1:8000/500/)
 
