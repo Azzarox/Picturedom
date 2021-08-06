@@ -1,7 +1,7 @@
 ## Project Overview
 The project website is named **Picturedom** and the idea is to create something resembling **Instagram** or **Pinterest**. Mainly photo-oriented website.
 
-## Main functionality:
+## Main functionality
 #### Images
 - can be liked and disliked
 - can be viewed
