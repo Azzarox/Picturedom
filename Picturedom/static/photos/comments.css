@@ -29,6 +29,18 @@ p.posted-by {
     width: 32%;
 }
 
+/* style for heart icon like image and likes */
+div.like-image a {
+    position: relative;
+    left: 3%;
+    font-size: 27px;
+    top:9px;
+}
+div span.show-likes {
+    margin: 14px 18px auto 18px;
+}
+
+
 /* container details */
 html body.vsc-initialized div.container div.container-fluid.col-lg-4.col-md-12.mb-4.mb-lg-0 {
     width: 50%;
