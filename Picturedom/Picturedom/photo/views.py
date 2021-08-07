@@ -4,7 +4,7 @@ from django.core.paginator import Paginator
 from django.shortcuts import render, redirect
 
 from Picturedom.photo.forms import PhotoForm, PhotoCommentForm, EditCommentForm
-from Picturedom.photo.models import Photo, Comment, CommentDislike, CommentLike, Category
+from Picturedom.photo.models import Photo, Comment, CommentDislike, CommentLike, Category, PhotoLike
 
 
 def homepage_photos(request):
@@ -53,7 +53,29 @@ def photo_comments(request, pk):
             'image_pk': pk
         }),
     }
+    if request.user.is_authenticated:
+        is_liked_by_user = photo.photolike_set.filter(
+            user=request.user).exists()
+        context['is_liked'] = is_liked_by_user
+
     return render(request, 'photos/comments.html', context)
+
+
+@login_required()
+def photo_like(request, pk):
+    photo = Photo.objects.get(pk=pk)
+
+    is_liked_by_user = photo.photolike_set.filter(
+        user=request.user).exists()
+    if not is_liked_by_user:
+        like = PhotoLike(
+            image=photo, user=request.user,
+        )
+        like.save()
+    else:
+        photo.photolike_set.filter(user=request.user).delete()
+
+    return redirect('photo comments', pk)
 
 
 @login_required()
