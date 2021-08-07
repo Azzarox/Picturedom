@@ -16,10 +16,15 @@ class Category(models.Model):
 
 
 class Photo(models.Model):
-    image = models.ImageField(upload_to='images',validators=[validate_image_file_size, validate_image_file_extension])
+    image = models.ImageField(upload_to='images', validators=[validate_image_file_size, validate_image_file_extension])
     posted_by = models.ForeignKey(User, on_delete=models.CASCADE)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     posted_at = models.DateTimeField(auto_now_add=True)
+
+
+class PhotoLike(models.Model):
+    image = models.ForeignKey(Photo, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 
 class Comment(models.Model):
