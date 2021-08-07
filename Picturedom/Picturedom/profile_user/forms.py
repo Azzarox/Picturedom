@@ -1,9 +1,10 @@
 from django import forms
 
+from Picturedom.core.mixins import BotCatcherMixin
 from Picturedom.profile_user.models import Profile
 
 
-class ProfileForm(forms.ModelForm):
+class ProfileForm(BotCatcherMixin, forms.ModelForm):
     class Meta:
         model = Profile
         exclude = ('user',)

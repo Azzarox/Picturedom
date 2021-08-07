@@ -1,9 +1,11 @@
 from django import forms
 from django.forms import widgets
+
+from Picturedom.core.mixins import BotCatcherMixin
 from Picturedom.photo.models import Photo, Comment
 
 
-class PhotoForm(forms.ModelForm):
+class PhotoForm(BotCatcherMixin, forms.ModelForm):
     """
     The init removes the '-----' visualisation when there is no category chosen.
     """
@@ -23,7 +25,7 @@ class PhotoForm(forms.ModelForm):
             'category': forms.RadioSelect()}
 
 
-class PhotoCommentForm(forms.ModelForm):
+class PhotoCommentForm(BotCatcherMixin, forms.ModelForm):
     image_pk = forms.IntegerField(widget=forms.HiddenInput())
 
     class Meta:
@@ -46,7 +48,7 @@ class PhotoCommentForm(forms.ModelForm):
         return comment
 
 
-class EditCommentForm(forms.ModelForm):
+class EditCommentForm(BotCatcherMixin, forms.ModelForm):
     class Meta:
         model = Comment
         fields = ['content', ]
