@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'Picturedom.profile_user',
     'Picturedom.photo',
     'crispy_forms',
+    'django_cleanup.apps.CleanupConfig',
 
 ]
 
