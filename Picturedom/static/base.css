@@ -60,11 +60,18 @@ form div label span.asteriskField {
     color: #212529
 }
 
+/* for profile edit profile button */
 .dark-mode button:not(.login-box button):not(.btn-close):hover {
     background: #292421;
     color: #fff;
     outline:white;
+}
 
+/* doesn't show on edit profile form section Update button and Post on comments -> white background hides the border */
+.dark-mode .btn.btn-outline-dark:not(.login-box button):not(.btn-close):hover {
+    background: #292421;
+    border:1px solid white;
+    color: #fff;
 }
 
 .dark-mode img {
