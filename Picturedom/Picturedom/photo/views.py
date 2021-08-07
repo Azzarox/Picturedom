@@ -48,6 +48,7 @@ def photo_comments(request, pk):
     comments = photo.comment_set.all().order_by('-posted_at')[:3]
     context = {
         'photo': photo,
+        'likes_count': photo.photolike_set.count,
         'comments': comments,
         'form': PhotoCommentForm(initial={
             'image_pk': pk
