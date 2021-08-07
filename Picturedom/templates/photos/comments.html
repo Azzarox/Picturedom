@@ -1,3 +1,5 @@
+{# Here stays the html which can be considered as the details of the photo, but it's named comments #}
+
 {% extends 'base.html' %}
 
 {% load crispy_forms_filters %}
@@ -5,68 +7,82 @@
 
 
 {% block style %}
-<link rel="stylesheet" href="{% static 'photos/comments.css' %}">
-{% endblock  %}
+    <link rel="stylesheet" href="{% static 'photos/comments.css' %}">
+{% endblock %}
 
 {% block main %}
-<div class="container-fluid col-lg-4 col-md-12 mb-4 mb-lg-0">
-	<p class='posted-by'>Posted By: {{photo.posted_by}}</p>
-	<div class="card">
-		<img src="{{photo.image.url}}" class="card-img-top" alt="...">
-		<div class="card-body">
+    <div class="container-fluid col-lg-4 col-md-12 mb-4 mb-lg-0">
+        <p class='posted-by'>Posted By: {{ photo.posted_by }}</p>
+        <div class="card">
+            <img src="{{ photo.image.url }}" class="card-img-top" alt="...">
+            {% for message in messages %}
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true"></span>
+                    </button>
+                </div>
+            {% endfor %}
+            {% if request.user.is_authenticated %}
+                <div class='like-image'>
+                    <a href="{% url 'photo like' photo.id %}" class=''>
+                        {% if is_liked %}
+                            <svg fill="#262626" height="40" role="img" viewBox="0 0 48 48" width="auto">
+                                <path d="M34.6 3.1c-4.5 0-7.9 1.8-10.6 5.6-2.7-3.7-6.1-5.5-10.6-5.5C6 3.1 0 9.6 0 17.6c0 7.3 5.4 12 10.6 16.5.6.5 1.3 1.1 1.9 1.7l2.3 2c4.4 3.9 6.6 5.9 7.6 6.5.5.3 1.1.5 1.6.5s1.1-.2 1.6-.5c1-.6 2.8-2.2 7.8-6.8l2-1.8c.7-.6 1.3-1.2 2-1.7C42.7 29.6 48 25 48 17.6c0-8-6-14.5-13.4-14.5z"></path>
+                            </svg>
+                        {% else %}
+                            <svg fill="#262626" height="40" role="img" viewBox="0 0 48 48" width="auto">
+                                <path d="M34.6 6.1c5.7 0 10.4 5.2 10.4 11.5 0 6.8-5.9 11-11.5 16S25 41.3 24 41.9c-1.1-.7-4.7-4-9.5-8.3-5.7-5-11.5-9.2-11.5-16C3 11.3 7.7 6.1 13.4 6.1c4.2 0 6.5 2 8.1 4.3 1.9 2.6 2.2 3.9 2.5 3.9.3 0 .6-1.3 2.5-3.9 1.6-2.3 3.9-4.3 8.1-4.3m0-3c-4.5 0-7.9 1.8-10.6 5.6-2.7-3.7-6.1-5.5-10.6-5.5C6 3.1 0 9.6 0 17.6c0 7.3 5.4 12 10.6 16.5.6.5 1.3 1.1 1.9 1.7l2.3 2c4.4 3.9 6.6 5.9 7.6 6.5.5.3 1.1.5 1.6.5.6 0 1.1-.2 1.6-.5 1-.6 2.8-2.2 7.8-6.8l2-1.8c.7-.6 1.3-1.2 2-1.7C42.7 29.6 48 25 48 17.6c0-8-6-14.5-13.4-14.5z"></path>
+                            </svg>
+                        {% endif %}
+                    </a>
+                </div>
+                <span class='show-likes'>{{ photo.photolike_set.count }} likes</span>
+            {% endif %}
+            <div class="card-body">
+                {% if comments %}
 
-			{% for message in messages  %}
-			<div class="alert alert-danger alert-dismissible fade show" role="alert">
-				{{message}}
-				<button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
-					<span aria-hidden="true"></span>
-				</button>
-			</div>
-			{% endfor %}
+                    {% for comment in comments %}
 
-			{% if comments %}
+                        <div class='mb-3'>
+                            <small style='whitespace:no-wrap;'>{{ comment.posted_at|date:"M d h:i a" }} - From
+                                {{ comment.user }}</small>
+                            <p style='margin:0;'>{{ comment.content }}</p>
+                            <a href="{% url 'like comment' comment.id %}" class='pe-1'>
+                                <i class="fas fa-thumbs-up"></i></a>{{ comment.commentlike_set.count }}
 
-			{% for comment in comments %}
+                            <a href="{% url 'dislike comment' comment.id %}" class='pe-1'>
+                                <i class="fas fa-thumbs-down"></i></a>{{ comment.commentdislike_set.count }}
 
-			<div class='mb-3'>
-				<small style='whitespace:no-wrap;'>{{comment.posted_at|date:"M d h:i a"}} - From
-					{{comment.user}}</small>
-				<p style='margin:0;'>{{comment.content}}</p>
-				<a href="{% url 'like comment' comment.id %}" class='pe-1'>
-					<i class="fas fa-thumbs-up"></i></a>{{comment.commentlike_set.count}}
+                            {% comment %} checks if the logged user is the one who is the owner of the comment {% endcomment %}
+                            {% if request.user == comment.user %}
+                                <a class='edit' href="{% url 'delete comment' comment.id %}">Delete</a>
+                                <a class='edit' href="{% url 'edit comment' comment.id %}">Edit</a>
+                            {% endif %}
+                        </div>
 
-				<a href="{% url 'dislike comment' comment.id %}" class='pe-1'>
-					<i class="fas fa-thumbs-down"></i></a>{{comment.commentdislike_set.count}}
+                    {% endfor %}
+                {% else %}
+                    <p>There are no comments for this picture</p>
+                {% endif %}
+            </div>
 
-				{% comment %} checks if the logged user is the one who is the owner of the comment {% endcomment %}
-				{% if request.user == comment.user %}
-				<a class='edit' href="{% url 'delete comment' comment.id %}">Delete</a>
-				<a class='edit' href="{% url 'edit comment' comment.id %}">Edit</a>
-				{% endif %}
-			</div>
-
-			{% endfor %}
-			{% else %}
-			<p>There are no comments for this picture</p>
-			{% endif %}
-		</div>
-
-		{% if request.user.is_authenticated %}
-		<div class="card-body">
-			<form action="{% url 'add comment' photo.id %}" method="POST">
-				<div class="form-group">
-					{% csrf_token %}
-					{{ form|crispy }}
-				</div>
-				<button class='btn btn-outline-dark mt-3' type="submit">Post</button>
-			</form>
-		</div>
-	</div>
-	{%endif%}
-</div>
+            {% if request.user.is_authenticated %}
+                <div class="card-body">
+                    <form action="{% url 'add comment' photo.id %}" method="POST">
+                        <div class="form-group">
+                            {% csrf_token %}
+                            {{ form|crispy }}
+                        </div>
+                        <button class='btn btn-outline-dark mt-3' type="submit">Post</button>
+                    </form>
+                </div>
+                </div>
+            {% endif %}
+    </div>
 
 {% endblock %}
 
 {% block scripts %}
 
-{% endblock  %}
+{% endblock %}
