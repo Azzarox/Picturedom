@@ -1,3 +1,6 @@
+
+
+/* ligh theme and others */
 body {
     font-weight: 500;
     font-family: 'Quicksand', sans-serif;
@@ -44,3 +47,69 @@ form div label span.asteriskField {
         width: 800px;
     }
 }
+
+/* dark mode */
+
+.dark-mode {
+    background-color: #212529;
+    color: white;
+}
+
+.dark-mode button:not(.login-box button):not(.btn-close) {
+    background-color: white;
+    color: #212529
+}
+
+.dark-mode button:not(.login-box button):not(.btn-close):hover {
+    background: #292421;
+    color: #fff;
+    outline:white;
+
+}
+
+.dark-mode img {
+    border: 1px solid rgb(77, 76, 76);
+}
+
+.dark-mode div.card:not(.alert .alert-danger) {
+    color: black;
+}
+
+/* profile section */
+.dark-mode .font-weight-bold {
+    color: black;
+}
+.dark-mode div h5.mb-0{
+    color:#6c757d;
+}
+
+.dark-mode form div.form-check.mt-1 label.form-check-label {
+    color:#6c757d
+}
+
+
+
+
+/*  login box in dark mode */
+.dark-mode .login-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    padding: 40px;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, .5);
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, .6);
+    border-radius: 10px;
+}
+
+.dark-mode .login-box button {
+    color: #f8f9fa;
+    border-color: #f8f9fa;
+}
+
+.dark-mode form div.form-check.mt-2 label.form-check-label {
+    color:white;
+}
+
