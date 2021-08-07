@@ -36,3 +36,8 @@ def validate_image_file_size(value):
     mb_limit = 8 * 1024 * 1024
     if value and value.size >= mb_limit:
         raise ValidationError('Image file size is over 8 MB. Please resize the image or upload another.')
+
+
+def validate_bot_field(value):
+    if value:
+        raise ValidationError("Bot has been detected!")
