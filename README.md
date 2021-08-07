@@ -30,7 +30,7 @@ The project website is named **Picturedom** and the idea is to create something 
 #### Others
 - All forms have bot catching field and validator checking if the field is empty or not
 
-## URL paths:
+## URL paths
 ### Disclaimer
 Everywhere where the url has number 1, it means it is used <int:pk>
 
@@ -60,3 +60,6 @@ Everywhere where the url has number 1, it means it is used <int:pk>
 - [http://127.0.0.1:8000/404/](http://127.0.0.1:8000/404/)
 - [http://127.0.0.1:8000/500/](http://127.0.0.1:8000/500/)
 
+## Dependencies
+- django-crispy-forms
+- psycopg2-binary
