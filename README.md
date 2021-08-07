@@ -62,4 +62,7 @@ Everywhere where the url has number 1, it means it is used <int:pk>
 
 ## Dependencies
 - django-crispy-forms
+- django-cleanup
 - psycopg2-binary
+- coverage
+- Pillow
