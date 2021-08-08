@@ -64,6 +64,9 @@ def photo_comments(request, pk):
 
 @login_required()
 def photo_like(request, pk):
+    """
+    Likes image, if the image is already liked by the user, it dislikes it.
+    """
     photo = Photo.objects.get(pk=pk)
 
     is_liked_by_user = photo.photolike_set.filter(
