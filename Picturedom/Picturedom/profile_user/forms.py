@@ -10,6 +10,10 @@ class ProfileForm(BotCatcherMixin, forms.ModelForm):
         exclude = ('user',)
         widgets = {
             'image': forms.FileInput(),
+            'first_name': forms.TextInput(attrs={'placeholder': 'First Name'}),
+            'last_name': forms.TextInput(attrs={'placeholder': 'Last Name'}),
+            'age': forms.NumberInput(attrs={'placeholder': 'Age'}),
+            'email': forms.TextInput(attrs={'placeholder': 'Email'}),
         }
 
 
