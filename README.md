@@ -43,6 +43,7 @@ Everywhere where the url has number 1, it means it is used <int:pk>
 - [http://127.0.0.1:8000/logout](http://127.0.0.1:8000/logout)
 ### Private
 - [http://127.0.0.1:8000/photo/create](http://127.0.0.1:8000/photo/create)
+- [http://127.0.0.1:8000/photo/like/1](http://127.0.0.1:8000/photo/like/1)
 - [http://127.0.0.1:8000/photo/comments/1](http://127.0.0.1:8000/photo/create)
 - [http://127.0.0.1:8000/photo/comments/edit/1](http://127.0.0.1:8000/photo/comments/edit/1)
 - [http://127.0.0.1:8000/photo/comments/delete/1](http://127.0.0.1:8000/photo/comments/delete/1)
