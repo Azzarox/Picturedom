@@ -16,6 +16,7 @@ def profile_details(request):
     user_images = request.user.photo_set.count()
     user_comments = request.user.comment_set.count()
     user_liked = request.user.commentlike_set.count()
+    all_likes_from_images = sum([photo.photolike_set.count() for photo in request.user.photo_set.all()])
 
     # Shows latest 4 pictures
     recent_photos = request.user.photo_set.all().order_by('-posted_at')[:4]
@@ -40,6 +41,7 @@ def profile_details(request):
         'user_images': user_images,
         'user_comments': user_comments,
         'user_liked': user_liked,
+        'total_likes': all_likes_from_images,
         'recent_photos': recent_photos,
     }
 
