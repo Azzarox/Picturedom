@@ -43,7 +43,8 @@ div span.show-likes {
 
 /* container details */
 html body.vsc-initialized div.container div.container-fluid.col-lg-4.col-md-12.mb-4.mb-lg-0 {
-    width: 50%;
+    /*width: 50%;*/
+    width: 39%; /* for 100% */
 }
 
 /* original my  width:18rem;*/
