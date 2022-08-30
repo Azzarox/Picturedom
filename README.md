@@ -70,3 +70,8 @@ Everywhere where the url has number 1, it means it is used <int:pk>
 - psycopg2-binary
 - coverage
 - Pillow
+
+### Note to self:
+- The project starts from the second 'Picturedom' folder (not where .gitignore is)
+- Run postgresql to load database service
+- This could be done many ways but the easiest (for Windows) is from Services, find postgresql and right click and 'start'
