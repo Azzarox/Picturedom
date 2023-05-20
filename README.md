@@ -8,7 +8,11 @@
 
 I have changed the DATABASES constant in [settings.py](./Picturedom/Picturedom/settings.py) to use `HOST:"postgres"` in order to work with the docker-compose.yml.
 
-There is a docker-compose.yml file which creates container of the app with postgresql. There are volumes for the /media folder so if any pictures are uploaded it should persist, as well as the database is made to persist.
+There is a docker-compose.yml file which creates container of the app with postgresql.
+
+To create the containers - `docker compose up` (Should be ran from the same directory where the docker-compose.yml file is located)
+
+There are volumes for the /media folder so if any pictures are uploaded it should persist, as well as the database is made to persist.
 
 If the container is ran for first time you would need to run:
 
