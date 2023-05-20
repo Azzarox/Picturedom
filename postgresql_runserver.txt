@@ -1,0 +1,3 @@
+Run postgresql server:
+1. Either run from Services on windows and find the postgresql service and run it from there.
+2. Or use the pg_ctl command like: pg_ctl [start/stop/status] -D [directory_to_postgresql_data_folder]
