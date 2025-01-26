@@ -17,9 +17,13 @@ application = get_wsgi_application()
 
 from django.contrib.auth.models import User
 
-ADMIN_USERNAME='admin'
-ADMIN_EMAIL="admin@admin.com"
-ADMIN_PASSWORD="admin"
 
-if not User.objects.filter(username=ADMIN_USERNAME).exists():
-    User.objects.create_superuser(username=ADMIN_USERNAME, email=ADMIN_EMAIL, password=ADMIN_PASSWORD)
+# Used to create super user if for deploy only if not access to deployed (render) shell; 
+# Could be run once to create and then rerun with commented out
+
+# ADMIN_USERNAME='admin'
+# ADMIN_EMAIL="admin@admin.com"
+# ADMIN_PASSWORD="admin"
+
+# if not User.objects.filter(username=ADMIN_USERNAME).exists():
+#     User.objects.create_superuser(username=ADMIN_USERNAME, email=ADMIN_EMAIL, password=ADMIN_PASSWORD)
