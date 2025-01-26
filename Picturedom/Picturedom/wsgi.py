@@ -22,7 +22,7 @@ ADMIN_EMAIL="admin@admin.com"
 ADMIN_PASSWORD="admin"
 
 if not User.objects.filter(username=ADMIN_USERNAME).exists():
-    User.objects.create_superuser(username=username, email=email, password=password)
-    print(f"Superuser '{username}' created successfully.")
+    User.objects.create_superuser(username=ADMIN_USERNAME, email=ADMIN_EMAIL, password=ADMIN_PASSWORD)
+    print(f"Superuser '{ADMIN_USERNAME}' created successfully.")
 else:
-    print(f"Superuser '{username}' already exists.")
+    print(f"Superuser '{ADMIN_USERNAME}' already exists.")
