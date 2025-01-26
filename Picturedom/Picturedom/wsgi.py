@@ -14,3 +14,15 @@ from django.core.wsgi import get_wsgi_application
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Picturedom.settings')
 
 application = get_wsgi_application()
+
+from django.contrib.auth.models import User
+
+ADMIN_USERNAME='admin'
+ADMIN_EMAIL="admin@admin.com"
+ADMIN_PASSWORD="admin"
+
+if not User.objects.filter(username=ADMIN_USERNAME).exists():
+    User.objects.create_superuser(username=username, email=email, password=password)
+    print(f"Superuser '{username}' created successfully.")
+else:
+    print(f"Superuser '{username}' already exists.")
