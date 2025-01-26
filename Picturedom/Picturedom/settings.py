@@ -86,17 +86,8 @@ WSGI_APPLICATION = 'Picturedom.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        # 'ENGINE': 'django.db.backends.postgresql',
-        # 'NAME': config('DB_NAME'), 
-        # 'USER': config('DB_USER'), 
-        # 'PASSWORD': config('DB_PASS'),
-        # 'HOST': config('DB_HOST'),
-        # 'PORT': config('DB_PORT'),
-    }
+    'default': dj_database_url.parse(config('DB_URL'))
 }
-
-DATABASES['default'] = dj_database_url.parse(config('DB_URL'))
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
