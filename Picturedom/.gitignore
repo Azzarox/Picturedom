@@ -1,0 +1,63 @@
+# Virtual environment
+venv/
+.env
+
+# Byte-compiled Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django specific
+db.sqlite3
+*.sqlite3
+*.log
+
+# Static files
+/static/
+/media/
+
+# Local development
+.DS_Store
+*.swp
+*.swo
+
+# VS Code
+.vscode/
+
+# PyCharm
+.idea/
+
+# Pipenv and virtualenv
+Pipfile
+Pipfile.lock
+
+# Coverage reports
+htmlcov/
+.coverage
+*.cover
+
+# Mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pytest
+.pytest_cache/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Backup files
+*.bak
+*.orig
+*.save
+
+# macOS
+*.DS_Store
+._*
+
+# Windows Thumbs.db files
+Thumbs.db
+
+# Others
+*.env
