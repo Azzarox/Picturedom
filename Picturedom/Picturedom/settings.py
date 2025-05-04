@@ -18,7 +18,7 @@ from pathlib import Path
 from django.urls import reverse_lazy
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+PROD = config('PROD', default=False, cast=bool)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -47,7 +47,6 @@ INSTALLED_APPS = [
     'Picturedom.photo',
     'crispy_forms',
     'django_cleanup.apps.CleanupConfig',
-
 ]
 
 MIDDLEWARE = [
@@ -59,6 +58,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
 
 ROOT_URLCONF = 'Picturedom.urls'
 
@@ -131,6 +131,8 @@ USE_L10N = True
 USE_TZ = True
 
 
+
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
@@ -153,3 +155,23 @@ LOGOUT_REDIRECT_URL = 'homepage photos'
 LOGIN_URL = reverse_lazy('login')
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+if PROD: 
+    INSTALLED_APPS += [
+        'cloudinary',
+        'cloudinary_storage'
+    ]
+
+    DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+    CLOUDINARY_STORAGE = {
+        'CLOUD_NAME': config('CLOUDINARY_CLOUD_NAME'),
+        'API_KEY':    config('CLOUDINARY_API_KEY'),
+        'API_SECRET': config('CLOUDINARY_API_SECRET'),
+    }
+
+    MIDDLEWARE += [
+        'whitenoise.middleware.WhiteNoiseMiddleware',
+    ]
+
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+    STATIC_ROOT = BASE_DIR / 'staticfiles'
