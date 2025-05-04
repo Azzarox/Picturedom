@@ -6,7 +6,7 @@ from Picturedom.core.validators import *
 
 
 class Category(models.Model):
-    title = models.CharField(max_length=10)
+    title = models.CharField(max_length=50)
 
     class Meta:
         verbose_name_plural = 'Categories'
