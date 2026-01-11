@@ -11,9 +11,11 @@ RUN pip install --no-cache-dir -r requirements.txt
 ARG SECRET_KEY
 ARG DEBUG
 ARG DB_URL
+ARG ALLOWED_HOSTS
 ENV SECRET_KEY=${SECRET_KEY}
 ENV DEBUG=${DEBUG}
 ENV DB_URL=${DB_URL}
+ENV ALLOWED_HOSTS=${ALLOWED_HOSTS}
 
 # Copy app code
 COPY . .
