@@ -1,0 +1,12 @@
+[
+  {"model": "photo.category", "pk": 1, "fields": {"title": "Nature"}},
+  {"model": "photo.category", "pk": 2, "fields": {"title": "Portrait"}},
+  {"model": "photo.category", "pk": 3, "fields": {"title": "Digital Art"}},
+  {"model": "photo.category", "pk": 4, "fields": {"title": "Urban Nightscapes"}},
+  {"model": "photo.category", "pk": 5, "fields": {"title": "Tech"}},
+  {"model": "photo.category", "pk": 6, "fields": {"title": "Abstract"}},
+  {"model": "photo.category", "pk": 7, "fields": {"title": "Landscape"}},
+  {"model": "photo.category", "pk": 8, "fields": {"title": "Wildlife"}},
+  {"model": "photo.category", "pk": 9, "fields": {"title": "Sports"}},
+  {"model": "photo.category", "pk": 10, "fields": {"title": "Architecture"}}
+]

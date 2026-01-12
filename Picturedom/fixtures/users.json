@@ -1,0 +1,25 @@
+[
+    {
+        "model": "auth.user",
+        "pk": 2,
+        "fields": {
+            "password": "pbkdf2_sha256$600000$Ot2Ctvxwr9nkBtLP4Ph3rf$+K5fJH5wgXEAizJLdCPA3JVfGyxSOZ1LuKPNUqPbGFw=",
+            "username": "test123",
+            "email": "test123@gmail.com",
+            "is_superuser": false,
+            "is_staff": false
+        }
+    },
+    {
+        "model": "profile_user.profile",
+        "pk": 1,
+        "fields": {
+            "first_name": "Test",
+            "last_name": "Testing",
+            "age": 25,
+            "email": "test123@gmail.com",
+            "image": "",
+            "user": 2
+        }
+    }
+]
