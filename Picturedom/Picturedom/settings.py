@@ -158,7 +158,7 @@ if PROD:
         'cloudinary_storage'
     ]
 
-    MEDIA_URL = '/Picturedom/media' # This is gonna be the cloudinary main folder
+    MEDIA_URL = '/Picturedom/media/' # This is gonna be the cloudinary main folder
 
     DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
     CLOUDINARY_STORAGE = {
