@@ -1,0 +1,32 @@
+# Use official Python image
+FROM python:3.11-slim
+
+# Set working directory
+WORKDIR /app
+
+# Install dependencies
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+ARG SECRET_KEY
+ARG DEBUG
+ARG DB_URL
+ARG ALLOWED_HOSTS
+ARG CSRF_TRUSTED_ORIGINS
+ENV SECRET_KEY=${SECRET_KEY}
+ENV DEBUG=${DEBUG}
+ENV DB_URL=${DB_URL}
+ENV ALLOWED_HOSTS=${ALLOWED_HOSTS}
+ENV CSRF_TRUSTED_ORIGINS=${CSRF_TRUSTED_ORIGINS}
+
+# Copy app code
+COPY . .
+
+# Collect static files
+RUN python manage.py collectstatic --noinput
+
+# Expose port
+EXPOSE 8000
+
+# Run Gunicorn (production server)
+CMD ["gunicorn", "src.wsgi:application", "--bind", "0.0.0.0:8000", "--workers", "3"]

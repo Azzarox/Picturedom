@@ -21,7 +21,7 @@ A photo-sharing social media platform built with **Django** and **PostgreSQL**, 
 ```shell
 # Clone the repository
 git clone <repository-url>
-cd Picturedom/Picturedom
+cd Picturedom
 
 # Create virtual environment
 python -m venv venv
@@ -99,7 +99,7 @@ python manage.py runserver
 
 ## Environment Variables
 
-Create a `.env` file in the `/Picturedom/Picturedom` directory:
+Create a `.env` file in the project root:
 
 ```dotenv
 # Environment
@@ -151,23 +151,22 @@ Volumes persist both media files and database data between container restarts.
 
 ```
 Picturedom/
-├── Picturedom/
-│   ├── Picturedom/                 # Django settings package
-│   │   ├── auth_app/               # Authentication (register, login)
-│   │   ├── photo/                  # Photo management (CRUD, likes, comments)
-│   │   ├── profile_user/           # User profiles
-│   │   ├── core/                   # Shared utilities & validators
-│   │   ├── settings.py             # Django configuration
-│   │   └── urls.py                 # URL routing
-│   ├── templates/                  # HTML templates
-│   ├── static/                     # CSS, JS, images
-│   ├── media/                      # User uploads
-│   ├── tests/                      # Test suite
-│   ├── fixtures/                   # Sample data (seeds)
-│   ├── docker-compose.yml
-│   ├── Dockerfile
-│   ├── requirements.txt
-│   └── manage.py
+├── src/                            # Django settings package
+│   ├── auth_app/                   # Authentication (register, login)
+│   ├── photo/                      # Photo management (CRUD, likes, comments)
+│   ├── profile_user/               # User profiles
+│   ├── core/                       # Shared utilities & validators
+│   ├── settings.py                 # Django configuration
+│   └── urls.py                     # URL routing
+├── templates/                      # HTML templates
+├── static/                         # CSS, JS, images
+├── media/                          # User uploads
+├── tests/                          # Test suite
+├── fixtures/                       # Sample data (seeds)
+├── docker-compose.yml
+├── Dockerfile
+├── requirements.txt
+├── manage.py
 ├── README.md
 └── LICENSE
 ```
