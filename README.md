@@ -1,131 +1,248 @@
 # Picturedom
 
--   [https://picturedom.onrender.com/](https://picturedom.onrender.com/)
--   [https://picturedom.up.railway.app/](https://picturedom.up.railway.app/)
+A photo-sharing social media platform built with **Django** and **PostgreSQL**, similar to Instagram or Pinterest. Users can share, like, comment on, and discover images organized by categories.
 
-## Docker Containers
+**Live Demo:**
+- [https://picturedom.onrender.com/](https://picturedom.onrender.com/)
+- [https://picturedom.up.railway.app/](https://picturedom.up.railway.app/)
 
-### IMPORTANT:
+---
 
-I have changed the DATABASES constant in [settings.py](./Picturedom/Picturedom/settings.py) to use `HOST:"postgres"` in order to work with the docker-compose.yml.
+## Requirements
 
-There is a docker-compose.yml file which creates container of the app with postgresql.
+- Python 3.9+
+- PostgreSQL
+- Docker & Docker Compose (optional)
 
-To create the containers - `docker compose up` (Should be ran from the same directory where the docker-compose.yml file is located)
+---
 
-There are volumes for the /media folder so if any pictures are uploaded it should persist, as well as the database is made to persist.
+## Quick Start
 
-If the container is ran for first time you would need to run:
+```shell
+# Clone the repository
+git clone <repository-url>
+cd Picturedom/Picturedom
 
--   `python manage.py makemigrates`
-    and after that
--   `python manage.py migrate`.
+# Create virtual environment
+python -m venv venv
+source venv/bin/activate  # Linux/Mac
+venv\Scripts\activate     # Windows
 
-You need to create superuser with `python manage.py createsuperuser` in order to create Category after going to `http://localhost:8000/admin`. Otherwise you won't be able to add photos.
+# Install dependencies
+pip install -r requirements.txt
 
-To run the commands above you need to run the container and attach to it by using `docker exec -it <container_id> bash`.
+# Configure environment variables
+cp .env.example .env
+# Edit .env with your database credentials
 
-### Django App Container
+# Run migrations
+python manage.py makemigrations
+python manage.py migrate
 
-You can only create the Django App container using: `docker build -t <your_desired_name_of_image> .` - You should be inside the folder where is the Dockerfile to run this command.
+# Load fixtures (seeds)
+python manage.py loaddata fixtures/categories.json
+python manage.py loaddata fixtures/users.json
+python manage.py loaddata fixtures/superuser.json
 
-To run the container use `docker run -it -p 8000:8000 <your_desired_name_of_image>`
+# Or create superuser manually
+python manage.py createsuperuser
 
-## Project Overview
+# Run development server
+python manage.py runserver
+```
 
-The project website is named **Picturedom** and the idea is to create something resembling **Instagram** or **Pinterest**. Mainly photo-oriented website.
+**Superuser fixture credentials:**
+- Username: `admin`
+- Email: `admin@gmail.com`
 
-## Main functionality
+---
 
-#### Images
+## Tech Stack
 
--   can be liked and disliked
--   can be viewed
--   can be posted
--   can be commented on
+- **Django 4.2** - Python web framework
+- **PostgreSQL 17** - Database
+- **Docker & Docker Compose** - Containerization
+- **Cloudinary** - Cloud image storage (production)
+- **WhiteNoise** - Static file serving
+- **Bootstrap 4** - Frontend styling (via crispy-forms)
+- **Pillow** - Image processing
+- **Gunicorn** - Production WSGI server
 
-#### Comments
+---
 
--   can be liked and disliked
--   can be edited
--   can be deleted
+## Features
 
-#### Profile
+### Photos
+- Upload photos (max 8MB) with category organization
+- Like/unlike photos
+- View photos by category (paginated)
+- Browse homepage with most recent photos
 
--   can edit information about first and last names, age and email also add profile image
+### Comments
+- Add comments to photos (max 200 characters)
+- Like/dislike comments
+- Edit and delete your own comments
+- Automatic forbidden word filtering
 
-## Data Validations
+### User Profiles
+- User authentication (register, login, logout)
+- Edit profile information (name, age, email, profile picture)
+- View user statistics (photos, comments, likes received)
 
-#### Images
+### Security & Validation
+- Bot protection on all forms
+- Email validation (.bg, .com, .edu, .net, .org)
+- Profile name validation (letters only)
+- Image file size limits (photos: 8MB, profile: 1MB)
 
--   can't post file bigger than or equal to 8MB
+---
 
-#### Comments
+## Environment Variables
 
--   can't add swearing words such as suck, fuck etc.
--   can't like or dislike when already liked or disliked already
+Create a `.env` file in the `/Picturedom/Picturedom` directory:
 
-#### Profile
+```dotenv
+# Environment
+PROD=false
 
--   can't have numbers or spaces in the first or last name of the user
--   can't have email ending with anything else except .bg .org .com .net .edu
--   can't have age bigger than or equal to 100
--   can't have profile image file size bigger than or equal to 1MB
+# Database
+DB_URL=
 
-#### Others
+# Other
+DEBUG=
+SECRET_KEY=
+ALLOWED_HOSTS='localhost,127.0.0.1'
+CSRF_TRUSTED_ORIGINS='http://localhost,http://something.else.com'
 
--   All forms have bot catching field and validator checking if the field is empty or not
+# Cloudinary
+CLOUDINARY_CLOUD_NAME=
+CLOUDINARY_API_KEY=
+CLOUDINARY_API_SECRET=
+```
 
-## URL paths
+---
 
-### Disclaimer
+## Docker Setup
 
-Everywhere where the url has number 1, it means it is used <int:pk>
+The `docker-compose.yml` creates three services:
+
+| Service | Port | Description |
+|---------|------|-------------|
+| django_app | 8000 | Django development server |
+| postgres | 5432 | PostgreSQL database |
+| pgadmin | 8080 | Database management GUI |
+
+```shell
+# Start all containers
+docker compose up
+
+# Stop all containers
+docker compose down
+
+# Access Django container shell
+docker exec -it <container_id> bash
+```
+
+Volumes persist both media files and database data between container restarts.
+
+---
+
+## Project Structure
+
+```
+Picturedom/
+├── Picturedom/
+│   ├── Picturedom/                 # Django settings package
+│   │   ├── auth_app/               # Authentication (register, login)
+│   │   ├── photo/                  # Photo management (CRUD, likes, comments)
+│   │   ├── profile_user/           # User profiles
+│   │   ├── core/                   # Shared utilities & validators
+│   │   ├── settings.py             # Django configuration
+│   │   └── urls.py                 # URL routing
+│   ├── templates/                  # HTML templates
+│   ├── static/                     # CSS, JS, images
+│   ├── media/                      # User uploads
+│   ├── tests/                      # Test suite
+│   ├── fixtures/                   # Sample data (seeds)
+│   ├── docker-compose.yml
+│   ├── Dockerfile
+│   ├── requirements.txt
+│   └── manage.py
+├── README.md
+└── LICENSE
+```
+
+---
+
+## Scripts
+
+```shell
+# Run development server
+python manage.py runserver
+
+# Database migrations
+python manage.py makemigrations
+python manage.py migrate
+
+# Load fixtures (seeds)
+python manage.py loaddata fixtures/categories.json
+python manage.py loaddata fixtures/users.json
+python manage.py loaddata fixtures/superuser.json
+
+# Create admin user manually
+python manage.py createsuperuser
+
+# Run tests
+python manage.py test
+
+# Collect static files (production)
+python manage.py collectstatic --noinput
+```
+
+---
+
+## Routes
 
 ### Public
 
--   [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
--   [http://127.0.0.1:8000/photo/1](http://127.0.0.1:8000/photo/1)
--   [http://127.0.0.1:8000/photo/categories/1](http://127.0.0.1:8000/photo/categories/1)
--   [http://127.0.0.1:8000/register](http://127.0.0.1:8000/register)
--   [http://127.0.0.1:8000/login](http://127.0.0.1:8000/login)
--   [http://127.0.0.1:8000/logout](http://127.0.0.1:8000/logout)
+| Route | Description |
+|-------|-------------|
+| `/` | Homepage - all photos |
+| `/photo/<id>/` | View photo with comments |
+| `/photo/categories/<id>/` | Photos by category |
+| `/register/` | User registration |
+| `/login/` | User login |
+| `/logout/` | User logout |
+| `/admin/` | Django admin panel |
 
-### Private
+### Authenticated
 
--   [http://127.0.0.1:8000/photo/create](http://127.0.0.1:8000/photo/create)
--   [http://127.0.0.1:8000/photo/like/1](http://127.0.0.1:8000/photo/like/1)
--   [http://127.0.0.1:8000/photo/comments/1](http://127.0.0.1:8000/photo/create)
--   [http://127.0.0.1:8000/photo/comments/edit/1](http://127.0.0.1:8000/photo/comments/edit/1)
--   [http://127.0.0.1:8000/photo/comments/delete/1](http://127.0.0.1:8000/photo/comments/delete/1)
--   [http://127.0.0.1:8000/photo/comments/like/1](http://127.0.0.1:8000/photo/comments/like/1)
--   [http://127.0.0.1:8000/photo/comments/dislike/1](http://127.0.0.1:8000/photo/comments/dislike/1)
--   [http://127.0.0.1:8000/user/photos](http://127.0.0.1:8000/user/photos)
--   [http://127.0.0.1:8000/user/profile](http://127.0.0.1:8000/user/profile)
+| Route | Description |
+|-------|-------------|
+| `/photo/create/` | Upload new photo |
+| `/photo/like/<id>/` | Like/unlike photo |
+| `/photo/comments/<id>/` | Add comment |
+| `/photo/comments/edit/<id>/` | Edit comment |
+| `/photo/comments/delete/<id>/` | Delete comment |
+| `/photo/comments/like/<id>/` | Like comment |
+| `/photo/comments/dislike/<id>/` | Dislike comment |
+| `/user/photos/` | Your uploaded photos |
+| `/user/profile/` | Edit your profile |
 
-### Admin
+---
 
--   [http://127.0.0.1:8000/admin/](http://127.0.0.1:8000/admin/)
+## Testing
 
-### Others
+```shell
+# Run all tests
+python manage.py test
 
-##### Handling custom error templates when debug is set to False
+# Run specific test module
+python manage.py test tests.auth_app.views.test_register_user
 
--   [http://127.0.0.1:8000/400/](http://127.0.0.1:8000/400/)
--   [http://127.0.0.1:8000/403/](http://127.0.0.1:8000/403/)
--   [http://127.0.0.1:8000/404/](http://127.0.0.1:8000/404/)
--   [http://127.0.0.1:8000/500/](http://127.0.0.1:8000/500/)
+# Run with coverage
+coverage run manage.py test
+coverage report
+```
 
-## Dependencies
-
--   django-crispy-forms
--   django-cleanup
--   psycopg2-binary
--   coverage
--   Pillow
-
-### Note to self:
-
--   The project starts from the second 'Picturedom' folder (not where .gitignore is)
--   Run postgresql to load database service
--   This could be done many ways but the easiest (for Windows) is from Services, find postgresql and right click and 'start'
+**Note:** Categories are required before users can upload photos. Load them using `python manage.py loaddata fixtures/categories.json` or create them manually via `/admin/`.
