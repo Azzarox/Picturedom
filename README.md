@@ -1,6 +1,7 @@
 # Picturedom
 
--   [https://picturedom.herokuapp.com/](https://picturedom.herokuapp.com/)
+-   [https://picturedom.onrender.com/](https://picturedom.onrender.com/)
+-   [https://picturedom.up.railway.app/](https://picturedom.up.railway.app/)
 
 ## Docker Containers
 
