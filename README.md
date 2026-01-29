@@ -3,8 +3,9 @@
 A photo-sharing social media platform built with **Django** and **PostgreSQL**, similar to Instagram or Pinterest. Users can share, like, comment on, and discover images organized by categories.
 
 **Live Demo:**
-- [https://picturedom.onrender.com/](https://picturedom.onrender.com/)
 - [https://picturedom.up.railway.app/](https://picturedom.up.railway.app/)
+- [https://picturedom.onrender.com/](https://picturedom.onrender.com/) [Inactive]
+
 
 ---
 
